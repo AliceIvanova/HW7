@@ -1,21 +1,20 @@
-package tests;
+package utils;
 
 import com.github.javafaker.Faker;
-
-import java.util.Date;
 
 public class TestData {
   Faker faker = new Faker();
 
   public String firstName = faker.name().firstName(),
     lastName = faker.name().lastName(),
-    gender = faker.options().option("Man", "Female", "Other"),
+    gender = faker.options().option("Male", "Female", "Other"),
     streetAddress = faker.address().streetAddress(),
     eMail = faker.internet().emailAddress(),
     dayOfBirth = String.valueOf(faker.number().numberBetween(1, 28)),
     monthOfBirth = faker.options().option("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"),
     userNumber = faker.phoneNumber().subscriberNumber(10),
-    yearOfBirth = String.valueOf(faker.date().birthday(18, 130)),
+    hobby=faker.options().option("Sports","Reading","Music"),
+    yearOfBirth = String.format("%s",faker.number().numberBetween(1960, 2023)),
     subject = faker.options().option("Hindi", "English", "Maths", "Physics",
       "Chemistry", "Biology", "Computer Science",
       "Commerce", "Accounting", "Economics", "Arts",

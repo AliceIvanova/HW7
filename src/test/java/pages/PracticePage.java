@@ -9,6 +9,12 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class PracticePage {
+  @Override
+  public String toString() {
+    return "PracticePage{" +
+      "welcomeText='" + welcomeText + '\'' +
+      '}';
+  }
 
   public String welcomeText="Thanks for submitting the form";
   public String uploadPictureFromPath="photo_2024-11-07_16-38-58.jpg";

@@ -3,6 +3,7 @@ package tests;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import utils.TestData;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
@@ -10,6 +11,8 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class RequiredFiedPracticeFormTest {
+  TestData testData=new TestData();
+
   @BeforeAll
   static void beforeAll() {
     Configuration.browserSize = "1920x1080";
@@ -19,11 +22,11 @@ public class RequiredFiedPracticeFormTest {
   @Test
   void requiredFieldTest() {
     open("https://demoqa.com/automation-practice-form");
-    $("#firstName").setValue("Alice");
-    $("#lastName").setValue("Ivanova");
-    $("#genterWrapper").$(byText("Female")).click();
-    $("#userNumber").setValue("1234567891");
-    $(byText("Submit")).scrollTo();
+    $("#firstName").setValue(testData.firstName);
+    $("#lastName").setValue(testData.lastName);
+    $("#genterWrapper").$(byText(testData.gender)).click();
+    $("#userNumber").setValue(testData.userNumber);
+    $(byText(testData.subject)).scrollTo();
     $("#userForm #submit").click();
 
     $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));

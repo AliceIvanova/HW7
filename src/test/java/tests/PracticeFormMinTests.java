@@ -3,21 +3,25 @@ package tests;
 
 import org.junit.jupiter.api.Test;
 import pages.PracticePage;
+import pages.components.Utils;
+import utils.TestData;
 
 public class PracticeFormMinTests extends TestBase{
   PracticePage practicePage = new PracticePage();
+  TestData testData=new TestData();
+
   @Test
   void fillFormTestMin() {
     practicePage.openTestPage("/automation-practice-form");
-      removeBanner();
-      practicePage.setFirstName("Alice")
-      .setLastName("Ivanova")
-      .setGender("Female")
-      .setUserNumber("1234567891")
+    Utils.removeBanner();
+      practicePage.setFirstName(testData.firstName)
+      .setLastName(testData.lastName)
+      .setGender(testData.gender)
+      .setUserNumber(testData.userNumber)
       .submitButton();
-      practicePage.checkResult("Student Name", "Alice Ivanova")
-      .checkResult("Gender", "Female")
-      .checkResult("Mobile","1234567891");
+      practicePage.checkResult("Student Name", testData.firstName + " " + testData.lastName)
+      .checkResult("Gender", testData.gender)
+      .checkResult("Mobile",testData.userNumber);
   }
 
 }
